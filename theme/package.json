@@ -10,6 +10,7 @@
     "start": "npm run build:css && remix dev"
   },
   "dependencies": {
+    "@curvenote/components": "^0.3.4",
     "@curvenote/site": "^0.0.15",
     "@curvenote/site-common": "^0.0.15",
     "@remix-run/node": "^1.7.2",
