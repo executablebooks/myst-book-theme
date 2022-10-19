@@ -6,10 +6,14 @@ import {
   useNavigationHeight,
   DocumentOutline,
   DEFAULT_NAV_HEIGHT,
+  Navigation,
+  TopNav,
 } from '@curvenote/site';
 import { getPage } from '~/utils';
+import { useLoaderData } from '@remix-run/react';
 import type { PageLoader, SiteManifest } from '@curvenote/site-common';
-import { useHideDesignElement } from '@curvenote/ui-providers';
+import { TabStateProvider, UiStateProvider } from '@curvenote/ui-providers';
+import { ArticlePageCatchBoundary } from '@curvenote/site';
 
 export const meta: MetaFunction = (args) => {
   const config = args.parentsData?.root?.config as SiteManifest | undefined;
@@ -31,15 +35,52 @@ export const loader: LoaderFunction = async ({ params, request }) => {
   return getPage(request, { project, slug, redirect: true });
 };
 
-export { ArticlePageCatchBoundary as CatchBoundary } from '@curvenote/site';
+function ArticlePageAndNavigation({
+  children,
+  hide_toc,
+  top = DEFAULT_NAV_HEIGHT,
+}: {
+  top?: number;
+  hide_toc?: boolean;
+  children: React.ReactNode;
+}) {
+  const { ref, height } = useNavigationHeight();
+  return (
+    <>
+      <Navigation top={top} height={height} hide_toc={hide_toc}>
+        <TopNav />
+      </Navigation>
+      <TabStateProvider>
+        <UiStateProvider>
+          <article ref={ref} className="content">
+            {children}
+          </article>
+        </UiStateProvider>
+      </TabStateProvider>
+    </>
+  );
+}
 
 export default function Page({ top = DEFAULT_NAV_HEIGHT }: { top?: number }) {
   const { ref, height } = useNavigationHeight();
-  const [hide_outline] = useHideDesignElement('hide_outline');
+  const article = useLoaderData<PageLoader>() as PageLoader;
+  const { hide_outline, hide_toc } = article.frontmatter?.design ?? {};
   return (
-    <main ref={ref} className="article-content">
-      <ArticlePage />
-      {!hide_outline && <DocumentOutline top={top} height={height} />}
-    </main>
+    <ArticlePageAndNavigation hide_toc={hide_toc}>
+      <main ref={ref} className="article-content">
+        <ArticlePage article={article} />
+        {!hide_outline && <DocumentOutline top={top} height={height} />}
+      </main>
+    </ArticlePageAndNavigation>
+  );
+}
+
+export function CatchBoundary() {
+  return (
+    <ArticlePageAndNavigation>
+      <main className="article-content">
+        <ArticlePageCatchBoundary />
+      </main>
+    </ArticlePageAndNavigation>
   );
 }
