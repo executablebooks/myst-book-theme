@@ -24,7 +24,10 @@ export const links: LinksFunction = () => {
 };
 
 export const loader: LoaderFunction = async ({ request }): Promise<DocumentLoader> => {
-  const [config, themeSession] = await Promise.all([getConfig(), getThemeSession(request)]);
+  const [config, themeSession] = await Promise.all([
+    getConfig().catch(() => null),
+    getThemeSession(request),
+  ]);
   if (!config) throw responseNoSite();
   const data = { theme: themeSession.getTheme(), config };
   return data;

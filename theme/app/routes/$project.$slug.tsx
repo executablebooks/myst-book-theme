@@ -35,7 +35,7 @@ export const loader: LoaderFunction = async ({ params, request }) => {
   return getPage(request, { project, slug, redirect: true });
 };
 
-function ArticlePageAndNavigation({
+export function ArticlePageAndNavigation({
   children,
   hide_toc,
   top = DEFAULT_NAV_HEIGHT,
