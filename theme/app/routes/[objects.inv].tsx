@@ -1,5 +1,5 @@
 import type { LoaderFunction } from '@remix-run/node';
-import { getObjectsInv } from '../utils';
+import { getObjectsInv } from '~/utils/loaders.server';
 
 export const loader: LoaderFunction = async (): Promise<Response> => {
   const inv = await getObjectsInv();

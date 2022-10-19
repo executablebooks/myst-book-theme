@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "start": "turbo run start --parallel",
+    "start": "cd theme && npm run start",
     "lint": "turbo run lint",
     "lint:format": "turbo run lint:format",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

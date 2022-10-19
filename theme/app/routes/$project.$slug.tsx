@@ -9,7 +9,7 @@ import {
   Navigation,
   TopNav,
 } from '@curvenote/site';
-import { getPage } from '~/utils';
+import { getPage } from '~/utils/loaders.server';
 import { useLoaderData } from '@remix-run/react';
 import type { PageLoader, SiteManifest } from '@curvenote/site-common';
 import { TabStateProvider, UiStateProvider } from '@curvenote/ui-providers';

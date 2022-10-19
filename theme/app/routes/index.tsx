@@ -2,7 +2,7 @@ import { responseNoArticle, responseNoSite } from '@curvenote/site';
 import type { LoaderFunction } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import { Outlet } from '@remix-run/react';
-import { getConfig } from '~/utils';
+import { getConfig } from '~/utils/loaders.server';
 
 export const loader: LoaderFunction = async (): Promise<Response | null> => {
   const config = await getConfig();

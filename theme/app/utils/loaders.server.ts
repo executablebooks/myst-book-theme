@@ -11,10 +11,11 @@ import {
 } from '@curvenote/site';
 import { redirect } from '@remix-run/node';
 
-const CURVENOTE_CDN_HOST = 'http://localhost:3005';
+const CONTENT_CDN_PORT = process.env.CONTENT_CDN_PORT ?? '3005';
+const CONTENT_CDN = `http://localhost:${CONTENT_CDN_PORT}`;
 
 export async function getConfig(): Promise<SiteManifest> {
-  const url = `${CURVENOTE_CDN_HOST}/config.json`;
+  const url = `${CONTENT_CDN}/config.json`;
   const response = await fetch(url).catch(() => null);
   if (!response || response.status === 404) {
     throw new Error(`No site configuration found at ${url}`);
@@ -25,12 +26,12 @@ export async function getConfig(): Promise<SiteManifest> {
 
 function updateLink(url: string) {
   if (!url) return url;
-  return `${CURVENOTE_CDN_HOST}${url}`;
+  return `${CONTENT_CDN}${url}`;
 }
 
 async function getStaticContent(project?: string, slug?: string): Promise<PageLoader | null> {
   if (!project || !slug) return null;
-  const url = `${CURVENOTE_CDN_HOST}/content/${project}/${slug}.json`;
+  const url = `${CONTENT_CDN}/content/${project}/${slug}.json`;
   const response = await fetch(url).catch(() => null);
   if (!response || response.status === 404) return null;
   const data = (await response.json()) as PageLoader;
