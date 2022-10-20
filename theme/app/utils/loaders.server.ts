@@ -58,7 +58,7 @@ export async function getPage(
 }
 
 export async function getObjectsInv(): Promise<Buffer | null> {
-  const url = updateLink('/_static/objects.inv');
+  const url = updateLink('/objects.inv');
   console.log(url);
   const response = await fetch(url).catch(() => null);
   if (!response || response.status === 404) return null;
