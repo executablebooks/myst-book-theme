@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
-import type { PageLoader, SiteManifest } from '@curvenote/site-common';
-import { getDomainFromRequest } from '@curvenote/site-common';
+import type { SiteManifest } from '@curvenote/site-common';
+import type { PageLoader } from '@curvenote/site';
+import { getDomainFromRequest } from '@curvenote/site';
 import {
   getFooterLinks,
   getProject,

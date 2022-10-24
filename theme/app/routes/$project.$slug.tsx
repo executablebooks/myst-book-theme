@@ -1,4 +1,5 @@
 import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
+import type { PageLoader } from '@curvenote/site';
 import {
   getMetaTagsForArticle,
   KatexCSS,
@@ -11,7 +12,7 @@ import {
 } from '@curvenote/site';
 import { getPage } from '~/utils/loaders.server';
 import { useLoaderData } from '@remix-run/react';
-import type { PageLoader, SiteManifest } from '@curvenote/site-common';
+import type { SiteManifest } from '@curvenote/site-common';
 import { TabStateProvider, UiStateProvider } from '@curvenote/ui-providers';
 import { ArticlePageCatchBoundary } from '@curvenote/site';
 

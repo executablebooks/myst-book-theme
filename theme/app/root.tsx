@@ -1,7 +1,7 @@
 import type { LinksFunction, MetaFunction, LoaderFunction } from '@remix-run/node';
 import tailwind from '~/styles/app.css';
 import { getConfig } from '~/utils/loaders.server';
-import type { SiteLoader } from '@curvenote/site-common';
+import type { SiteLoader } from '@curvenote/site';
 import { App, responseNoSite, getMetaTagsForSite, getThemeSession } from '@curvenote/site';
 export {
   AppCatchBoundary as CatchBoundary,
