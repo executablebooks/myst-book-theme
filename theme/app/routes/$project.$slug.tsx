@@ -47,18 +47,16 @@ export function ArticlePageAndNavigation({
 }) {
   const { ref, height } = useNavigationHeight();
   return (
-    <>
+    <UiStateProvider>
       <Navigation top={top} height={height} hide_toc={hide_toc}>
         <TopNav />
       </Navigation>
       <TabStateProvider>
-        <UiStateProvider>
-          <article ref={ref} className="content">
-            {children}
-          </article>
-        </UiStateProvider>
+        <article ref={ref} className="content">
+          {children}
+        </article>
       </TabStateProvider>
-    </>
+    </UiStateProvider>
   );
 }
 
