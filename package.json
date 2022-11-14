@@ -12,11 +12,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@remix-run/node": "^1.7.2",
-    "@remix-run/react": "^1.7.2",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "eslint-config-curvenote": "*",
+    "@remix-run/node": "^1.7.5",
+    "@remix-run/react": "^1.7.5",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "eslint-config-curvenote": "latest",
     "prettier": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,7 +31,6 @@
     "ansi-to-react": {
       "react": "^18.2.0",
       "react-dom": "^18.2.0"
-    },
-    "myst-frontmatter": "latest"
+    }
   }
 }
