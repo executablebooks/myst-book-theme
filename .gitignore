@@ -4,6 +4,8 @@ node_modules
 .env
 .vercel
 .output
+.yalc
+yalc.lock
 
 /public/build
 /api/*
