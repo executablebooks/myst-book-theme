@@ -16,3 +16,6 @@ options:
   - type: boolean
     id: hide_toc
     description: Hide the table of contents
+build:
+  install: npm install
+  start: npm run start
