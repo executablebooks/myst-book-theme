@@ -27,6 +27,12 @@ export async function getConfig(): Promise<SiteManifest> {
 
 function updateLink(url: string) {
   if (!url) return url;
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol.startsWith('http')) return url;
+  } catch (error) {
+    // pass
+  }
   return `${CONTENT_CDN}${url}`;
 }
 
