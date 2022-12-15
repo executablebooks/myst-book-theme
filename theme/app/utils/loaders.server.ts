@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import type { SiteManifest } from '@curvenote/site-common';
+import type { SiteManifest } from 'myst-config';
 import type { PageLoader } from '@curvenote/site';
 import { getDomainFromRequest } from '@curvenote/site';
 import {
@@ -30,7 +30,10 @@ function updateLink(url: string) {
   return `${CONTENT_CDN}${url}`;
 }
 
-async function getStaticContent(project?: string, slug?: string): Promise<PageLoader | null> {
+async function getStaticContent(
+  project?: string,
+  slug?: string
+): Promise<PageLoader | null> {
   if (!project || !slug) return null;
   const url = `${CONTENT_CDN}/content/${project}/${slug}.json`;
   const response = await fetch(url).catch(() => null);
@@ -41,7 +44,12 @@ async function getStaticContent(project?: string, slug?: string): Promise<PageLo
 
 export async function getPage(
   request: Request,
-  opts: { project?: string; loadIndexPage?: boolean; slug?: string; redirect?: boolean }
+  opts: {
+    project?: string;
+    loadIndexPage?: boolean;
+    slug?: string;
+    redirect?: boolean;
+  }
 ) {
   const projectName = opts.project;
   const config = await getConfig();
@@ -51,7 +59,8 @@ export async function getPage(
   if (opts.slug === project.index && opts.redirect) {
     return redirect(`/${projectName}`);
   }
-  const slug = opts.loadIndexPage || opts.slug == null ? project.index : opts.slug;
+  const slug =
+    opts.loadIndexPage || opts.slug == null ? project.index : opts.slug;
   const loader = await getStaticContent(projectName, slug).catch(() => null);
   if (!loader) throw responseNoArticle();
   const footer = getFooterLinks(config, projectName, slug);

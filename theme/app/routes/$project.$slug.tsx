@@ -1,4 +1,8 @@
-import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/node';
 import type { PageLoader } from '@curvenote/site';
 import {
   getMetaTagsForArticle,
@@ -12,7 +16,7 @@ import {
 } from '@curvenote/site';
 import { getPage } from '~/utils/loaders.server';
 import { useLoaderData } from '@remix-run/react';
-import type { SiteManifest } from '@curvenote/site-common';
+import type { SiteManifest } from 'myst-config';
 import { TabStateProvider, UiStateProvider } from '@curvenote/ui-providers';
 import { ArticlePageCatchBoundary } from '@curvenote/site';
 
@@ -25,7 +29,9 @@ export const meta: MetaFunction = (args) => {
     url: args.location.pathname,
     title: `${data.frontmatter.title} - ${config?.title}`,
     description: data.frontmatter.description,
-    image: (data.frontmatter.thumbnailOptimized || data.frontmatter.thumbnail) ?? undefined,
+    image:
+      (data.frontmatter.thumbnailOptimized || data.frontmatter.thumbnail) ??
+      undefined,
   });
 };
 
