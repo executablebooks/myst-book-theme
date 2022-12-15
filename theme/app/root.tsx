@@ -32,7 +32,7 @@ export const loader: LoaderFunction = async ({ request }): Promise<SiteLoader> =
   const data = {
     theme: themeSession.getTheme(),
     config,
-    CONTENT_CDN_PORT: process.env.CONTENT_CDN_PORT,
+    CONTENT_CDN_PORT: process.env.CONTENT_CDN_PORT ?? 3100,
   };
   return data;
 };
