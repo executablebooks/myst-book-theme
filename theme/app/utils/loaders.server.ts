@@ -12,7 +12,7 @@ import {
 } from '@curvenote/site';
 import { redirect } from '@remix-run/node';
 
-const CONTENT_CDN_PORT = process.env.CONTENT_CDN_PORT ?? '3005';
+const CONTENT_CDN_PORT = process.env.CONTENT_CDN_PORT ?? '3100';
 const CONTENT_CDN = `http://localhost:${CONTENT_CDN_PORT}`;
 
 export async function getConfig(): Promise<SiteManifest> {
@@ -36,10 +36,7 @@ function updateLink(url: string) {
   return `${CONTENT_CDN}${url}`;
 }
 
-async function getStaticContent(
-  project?: string,
-  slug?: string
-): Promise<PageLoader | null> {
+async function getStaticContent(project?: string, slug?: string): Promise<PageLoader | null> {
   if (!project || !slug) return null;
   const url = `${CONTENT_CDN}/content/${project}/${slug}.json`;
   const response = await fetch(url).catch(() => null);
@@ -65,8 +62,7 @@ export async function getPage(
   if (opts.slug === project.index && opts.redirect) {
     return redirect(`/${projectName}`);
   }
-  const slug =
-    opts.loadIndexPage || opts.slug == null ? project.index : opts.slug;
+  const slug = opts.loadIndexPage || opts.slug == null ? project.index : opts.slug;
   const loader = await getStaticContent(projectName, slug).catch(() => null);
   if (!loader) throw responseNoArticle();
   const footer = getFooterLinks(config, projectName, slug);
