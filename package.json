@@ -2,11 +2,13 @@
   "private": true,
   "workspaces": [
     "theme-base/packages/*",
-    "theme"
+    "src"
   ],
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "start": "cd theme && npm run start",
+    "build": "turbo run build",
+    "postinstall": "npm run build",
+    "start": "cd src && npm run start",
     "lint": "turbo run lint",
     "lint:format": "turbo run lint:format",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import type { SiteManifest } from 'myst-config';
-import type { PageLoader } from '@curvenote/site';
-import { getDomainFromRequest } from '@curvenote/site';
+import type { PageLoader } from '@myst-theme/site';
+import { getDomainFromRequest } from '@myst-theme/site';
 import {
   getFooterLinks,
   getProject,
@@ -9,7 +9,7 @@ import {
   responseNoSite,
   updatePageStaticLinksInplace,
   updateSiteManifestStaticLinksInplace,
-} from '@curvenote/site';
+} from '@myst-theme/site';
 import { redirect } from '@remix-run/node';
 
 const CONTENT_CDN_PORT = process.env.CONTENT_CDN_PORT ?? '3100';

@@ -1,9 +1,5 @@
-import type {
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from '@remix-run/node';
-import type { PageLoader } from '@curvenote/site';
+import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
+import type { PageLoader } from '@myst-theme/site';
 import {
   getMetaTagsForArticle,
   KatexCSS,
@@ -13,12 +9,12 @@ import {
   DEFAULT_NAV_HEIGHT,
   Navigation,
   TopNav,
-} from '@curvenote/site';
+} from '@myst-theme/site';
 import { getPage } from '~/utils/loaders.server';
 import { useLoaderData } from '@remix-run/react';
 import type { SiteManifest } from 'myst-config';
-import { TabStateProvider, UiStateProvider } from '@curvenote/ui-providers';
-import { ArticlePageCatchBoundary } from '@curvenote/site';
+import { TabStateProvider, UiStateProvider } from '@myst-theme/providers';
+import { ArticlePageCatchBoundary } from '@myst-theme/site';
 
 export const meta: MetaFunction = (args) => {
   const config = args.parentsData?.root?.config as SiteManifest | undefined;
@@ -29,9 +25,7 @@ export const meta: MetaFunction = (args) => {
     url: args.location.pathname,
     title: `${data.frontmatter.title} - ${config?.title}`,
     description: data.frontmatter.description,
-    image:
-      (data.frontmatter.thumbnailOptimized || data.frontmatter.thumbnail) ??
-      undefined,
+    image: (data.frontmatter.thumbnailOptimized || data.frontmatter.thumbnail) ?? undefined,
   });
 };
 
@@ -69,7 +63,7 @@ export function ArticlePageAndNavigation({
 export default function Page({ top = DEFAULT_NAV_HEIGHT }: { top?: number }) {
   const { ref, height } = useNavigationHeight();
   const article = useLoaderData<PageLoader>() as PageLoader;
-  const { hide_outline, hide_toc } = article.frontmatter?.design ?? {};
+  const { hide_outline, hide_toc } = (article.frontmatter as any)?.design ?? {};
   return (
     <ArticlePageAndNavigation hide_toc={hide_toc}>
       <main ref={ref} className="article-content">

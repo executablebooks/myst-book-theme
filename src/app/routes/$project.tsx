@@ -1,4 +1,4 @@
-import { ProjectPageCatchBoundary } from '@curvenote/site';
+import { ProjectPageCatchBoundary } from '@myst-theme/site';
 import Page, { ArticlePageAndNavigation } from './$project.$slug';
 export { loader, links } from './$project.$slug';
 export default Page;
