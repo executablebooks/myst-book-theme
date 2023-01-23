@@ -32,5 +32,5 @@ module.exports = {
     '@jupyterlab/rendermime',
     '@jupyterlab/rendermime-interfaces',
   ],
-  watchPaths: ['../theme-base/packages/**/*'],
+  watchPaths: ['../packages/**/*'],
 };

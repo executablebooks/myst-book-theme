@@ -5,11 +5,16 @@ module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     // Look to the actual packages too (better than node_modules for pnpm)
-    '../theme-base/packages/myst-to-react/src/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/myst-demo/src/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/site/src/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/frontmatter/src/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/jupyter/src/**/*.{js,ts,jsx,tsx}',
+    'node_modules/myst-to-react/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    'node_modules/myst-demo/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    'node_modules/@myst-theme/site/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    'node_modules/@myst-theme/frontmatter/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    'node_modules/@myst-theme/jupyter/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../theme-base/packages/myst-to-react/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../theme-base/packages/myst-demo/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../theme-base/packages/site/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../theme-base/packages/frontmatter/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../theme-base/packages/jupyter/{src,dist}/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
