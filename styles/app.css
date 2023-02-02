@@ -137,3 +137,7 @@ details[open] > summary svg {
   user-select: none;
   pointer-events: none;
 }
+/* Hide the output prompts from jupyter by default */
+.jp-OutputPrompt {
+  display: none;
+}
