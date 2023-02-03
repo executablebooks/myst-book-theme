@@ -10,11 +10,12 @@ module.exports = {
     'node_modules/@myst-theme/site/{src,dist}/**/*.{js,ts,jsx,tsx}',
     'node_modules/@myst-theme/frontmatter/{src,dist}/**/*.{js,ts,jsx,tsx}',
     'node_modules/@myst-theme/jupyter/{src,dist}/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/myst-to-react/{src,dist}/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/myst-demo/{src,dist}/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/site/{src,dist}/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/frontmatter/{src,dist}/**/*.{js,ts,jsx,tsx}',
-    '../theme-base/packages/jupyter/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    // Duplicate the above in case this is in a submodule
+    '../../packages/myst-to-react/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../../packages/myst-demo/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../../packages/site/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../../packages/frontmatter/{src,dist}/**/*.{js,ts,jsx,tsx}',
+    '../../packages/jupyter/{src,dist}/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
