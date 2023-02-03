@@ -1,6 +1,6 @@
-# @curvenote/book-theme
+# @myst-theme/book
 
-The "book" theme for a Curvenote site.
+A lightweight MyST theme designed to mimic the look-and-feel of an interactive book.
 
 ## Usage with MyST
 
@@ -8,10 +8,10 @@ To use this template locally, update your site template make sure your project's
 
 ```sh
 site:
-  template: curvenote/book
+  template: book-theme
 ```
 
-Then start the local theme server:
+Then start the local server:
 
 ```sh
 myst start
@@ -21,15 +21,8 @@ Open up [http://localhost:3000](http://localhost:3000) and you should be ready t
 
 ## Development
 
-This repository depends on the packages in [@curvenote/theme-base](https://github.com/curvenote/theme-base), and these are brought in as a sub-module.
-When installing, use `git clone --recursive` when first cloning.
+This repository depends on the packages in [myst-theme](https://github.com/executablebooks/myst-theme) and is best developed in that repository to allow for live-reload, etc.
 
 ## Deployment
 
-This theme can be used by any Curvenote site, to use the hosted theme simply
-
-```sh
-curvenote deploy
-```
-
-It is also possible to deploy a version of this to Vercel, Netlify or your own server infrastructure. See the [Remix docs](https://remix.run/docs) for more information on custom deployments.
+See the [Remix docs](https://remix.run/docs) for more information on custom deployments.
