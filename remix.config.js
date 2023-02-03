@@ -25,7 +25,7 @@ module.exports = {
     'myst-to-react',
     'myst-demo',
     '@myst-theme/providers',
-    '@curvenote/icons',
+    '@myst-theme/icons',
     '@myst-theme/site',
     '@myst-theme/jupyter',
     'react-syntax-highlighter',

@@ -10,11 +10,10 @@
     "start": "npm run build:css && remix dev"
   },
   "dependencies": {
-    "@curvenote/components": "^0.3.4",
-    "@myst-theme/icons": "^0.1.0",
-    "@myst-theme/jupyter": "^0.1.22",
-    "@myst-theme/providers": "^0.1.22",
-    "@myst-theme/site": "^0.1.22",
+    "@myst-theme/icons": "^0.1.1",
+    "@myst-theme/jupyter": "^0.1.23",
+    "@myst-theme/providers": "^0.1.23",
+    "@myst-theme/site": "^0.1.23",
     "@remix-run/node": "^1.12.0",
     "@remix-run/react": "^1.12.0",
     "@remix-run/vercel": "^1.12.0",
