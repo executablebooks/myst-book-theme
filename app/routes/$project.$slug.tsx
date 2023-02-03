@@ -9,12 +9,13 @@ import {
   DEFAULT_NAV_HEIGHT,
   Navigation,
   TopNav,
+  ArticlePageCatchBoundary,
 } from '@myst-theme/site';
 import { getPage } from '~/utils/loaders.server';
 import { useLoaderData } from '@remix-run/react';
 import type { SiteManifest } from 'myst-config';
 import { TabStateProvider, UiStateProvider } from '@myst-theme/providers';
-import { ArticlePageCatchBoundary } from '@myst-theme/site';
+import { MadeWithMyst } from '@myst-theme/icons';
 
 export const meta: MetaFunction = (args) => {
   const config = args.parentsData?.root?.config as SiteManifest | undefined;
@@ -48,7 +49,7 @@ export function ArticlePageAndNavigation({
   const { ref, height } = useNavigationHeight();
   return (
     <UiStateProvider>
-      <Navigation top={top} height={height} hide_toc={hide_toc}>
+      <Navigation top={top} height={height} hide_toc={hide_toc} footer={<MadeWithMyst />}>
         <TopNav />
       </Navigation>
       <TabStateProvider>
