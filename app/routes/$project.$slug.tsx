@@ -53,7 +53,11 @@ export function ArticlePageAndNavigation({
         <TopNav />
       </Navigation>
       <TabStateProvider>
-        <article ref={ref} className="content">
+        <article
+          ref={ref}
+          className="article content article-grid article-grid-gap"
+          style={{ marginTop: top + 16 }}
+        >
           {children}
         </article>
       </TabStateProvider>
@@ -67,7 +71,7 @@ export default function Page({ top = DEFAULT_NAV_HEIGHT }: { top?: number }) {
   const { hide_outline, hide_toc } = (article.frontmatter as any)?.design ?? {};
   return (
     <ArticlePageAndNavigation hide_toc={hide_toc}>
-      <main ref={ref} className="article-content">
+      <main ref={ref} className="article-grid article-subgrid-gap col-screen">
         <ArticlePage article={article} />
         {!hide_outline && <DocumentOutline top={top} height={height} />}
       </main>
