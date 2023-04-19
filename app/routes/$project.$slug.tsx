@@ -4,7 +4,8 @@ import {
   getMetaTagsForArticle,
   KatexCSS,
   ArticlePage,
-  useNavigationHeight,
+  useOutlineHeight,
+  useTocHeight,
   DocumentOutline,
   DEFAULT_NAV_HEIGHT,
   Navigation,
@@ -46,15 +47,15 @@ export function ArticlePageAndNavigation({
   hide_toc?: boolean;
   children: React.ReactNode;
 }) {
-  const { ref, height } = useNavigationHeight();
+  const { container, toc } = useTocHeight(top);
   return (
     <UiStateProvider>
-      <Navigation top={top} height={height} hide_toc={hide_toc} footer={<MadeWithMyst />}>
+      <Navigation tocRef={toc} top={top} hide_toc={hide_toc} footer={<MadeWithMyst />}>
         <TopNav />
       </Navigation>
       <TabStateProvider>
         <article
-          ref={ref}
+          ref={container}
           className="article content article-grid article-grid-gap"
           style={{ marginTop: top + 16 }}
         >
@@ -66,14 +67,14 @@ export function ArticlePageAndNavigation({
 }
 
 export default function Page({ top = DEFAULT_NAV_HEIGHT }: { top?: number }) {
-  const { ref, height } = useNavigationHeight();
+  const { container, outline } = useOutlineHeight();
   const article = useLoaderData<PageLoader>() as PageLoader;
   const { hide_outline, hide_toc } = (article.frontmatter as any)?.design ?? {};
   return (
     <ArticlePageAndNavigation hide_toc={hide_toc}>
-      <main ref={ref} className="article-grid article-subgrid-gap col-screen">
+      <main ref={container} className="article-grid article-subgrid-gap col-screen">
         <ArticlePage article={article} />
-        {!hide_outline && <DocumentOutline top={top} height={height} />}
+        {!hide_outline && <DocumentOutline outlineRef={outline} top={top} />}
       </main>
     </ArticlePageAndNavigation>
   );
